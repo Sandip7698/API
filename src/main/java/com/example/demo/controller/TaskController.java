@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,23 @@ return taskService.saveinfo(taskdto);
 public Optional<Task> getByid(@PathVariable ("userId")Long userId){
     return taskService.getById(userId);
 }
+    @GetMapping("/findByfirstName/{firstName}")
+    public Optional<Task> getByfirstName(@PathVariable("firstName")String firstName){
+        return taskService.getByFirstName(firstName);
+    }
+    @PostMapping("/update/{userId}")
+    public ResponseEntity<String> updateData(@PathVariable ("userId")Long userId,@RequestBody Taskdto taskdto){
+        return taskService.updatedata(userId,taskdto);
+    }
+
+    @GetMapping("/deleteByid/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable ("userId")Long userId){
+        return taskService.deleteById(userId);
+    }
+
+    @GetMapping("/all")
+    public List<Task> all(){
+        return taskService.all();
+    }
 
 }

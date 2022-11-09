@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -14,5 +15,11 @@ public interface taskService  {
 	Optional<Task> getById(Long userId);
 
 
+    Optional<Task> getByFirstName(String firstName);
 
+	ResponseEntity<String> updatedata(Long userId, Taskdto taskdto);
+
+	ResponseEntity<String> deleteById(Long userId);
+
+	List<Task> all();
 }
